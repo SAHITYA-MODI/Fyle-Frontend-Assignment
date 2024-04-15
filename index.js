@@ -100,6 +100,11 @@ function numbersOnlyforGrossIncome(event) {
     document.getElementById("error-gross").style.display = "none";
     document.getElementById("error-gross").style.visibility = "hidden";
   }
+
+  if (event.target.value === 0 || event.target.value == "0") {
+    document.getElementById("error-gross").style.display = "none";
+    document.getElementById("error-gross").style.visibility = "hidden";
+  }
 }
 
 function numbersOnlyforExtraIncome(event) {
@@ -110,6 +115,11 @@ function numbersOnlyforExtraIncome(event) {
     document.getElementById("error-extra").style.display = "none";
     document.getElementById("error-extra").style.visibility = "hidden";
   }
+
+  if (event.target.value === 0 || event.target.value == "0") {
+    document.getElementById("error-extra").style.display = "none";
+    document.getElementById("error-extra").style.visibility = "hidden";
+  }
 }
 
 function numbersOnlyforDeductions(event) {
@@ -117,6 +127,10 @@ function numbersOnlyforDeductions(event) {
     document.getElementById("error-deductions").style.display = "block";
     document.getElementById("error-deductions").style.visibility = "visible";
   } else {
+    document.getElementById("error-deductions").style.display = "none";
+    document.getElementById("error-deductions").style.visibility = "hidden";
+  }
+  if (event.target.value === 0 || event.target.value == "0") {
     document.getElementById("error-deductions").style.display = "none";
     document.getElementById("error-deductions").style.visibility = "hidden";
   }
