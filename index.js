@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Validate inputs
     const isValid = validateInputs(grossIncome, extraIncome, deductions, age);
 
+    if (age === "select") {
+      document.getElementById("error-required").style.display = "block";
+      document.getElementById("error-required").style.visibility = "visible";
+      document.getElementById("error-required").style.right = "30px";
+    }
+
     if (isValid) {
       // Calculate tax
       const tax = calculateTax(grossIncome, extraIncome, deductions, age);
@@ -30,11 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Display result in modal
       taxResult.textContent = `${formattedTax}`;
       modal.style.display = "block";
-    } else {
-      document.getElementById("error-required").style.display = "block";
-      document.getElementById("error-required").style.visibility = "visible";
-      document.getElementById("error-required").style.right = "30px";
-      return;
     }
   });
 
@@ -53,11 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function validateInputs(grossIncome, extraIncome, deductions, age) {
   // Check if any input field is empty or not a number
+
+  if (age === "select") {
+    return false;
+  }
+
   if (
-    isNaN(grossIncome) &&
-    isNaN(extraIncome) &&
-    isNaN(deductions) &&
-    age === "select"
+    (isNaN(grossIncome) || grossIncome === 0) &&
+    (isNaN(extraIncome) || grossIncome === 0) &&
+    (isNaN(deductions) || grossIncome === 0) &&
+    age.value === "select"
   ) {
     return false;
   }
